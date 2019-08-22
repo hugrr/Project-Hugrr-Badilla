@@ -45,9 +45,9 @@ export class Navbar extends React.Component {
 									</ul>
 								</li>
 								<li className="btn-cta">
-									<a href="#">
+									<Link to="/">
 										<span>Get started</span>
-									</a>
+									</Link>
 								</li>
 							</ul>
 						</div>

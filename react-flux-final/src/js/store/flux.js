@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			apiUrl: "https://3000-cfbfca10-a3e3-424f-a23b-3b375c64fb58.ws-us0.gitpod.io",
+			apiUrl: "https://3000-cfbfca10-a3e3-424f-a23b-3b375c64fb58.ws-us0.gitpod.io/",
 			token: {
 				refresh: "",
 				access: ""
@@ -24,6 +24,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					[name]: value
 				});
 			},
+
+			handleMiembro: e => {
+				const { name, value } = e.target;
+				const store = getStore();
+				let miembro = store.miembro;
+				miembro[name] = value;
+				setStore({
+					miembro
+				});
+			},
+
 			handleLogin: (e, history) => {
 				e.preventDefault();
 				const store = getStore();
@@ -33,6 +44,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				e.preventDefault();
 				const store = getStore();
 				getActions().register(store.username, store.email, store.password);
+			},
+			handleUser: (e, history) => {
+				e.preventDefault();
+				getActions().putMiembro(history);
 			},
 			login: (username, password, history) => {
 				const store = getStore();
@@ -123,7 +138,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				})
 					.then(resp => resp.json())
-					.then(data => setStore({ miembro: data }));
+					.then(data => {
+						setStore({ miembro: data });
+						console.log(data);
+					});
+			},
+			putMiembro: history => {
+				const store = getStore();
+				const data = store.miembro;
+
+				fetch(store.apiUrl + "/api/profile/", {
+					method: "PUT",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token.access
+					}
+				})
+					.then(resp => resp.json())
+					.then(data => {
+						setStore({ miembro: data });
+						alert("Tus datos se actualizaron");
+						history.push("/usuarios");
+					});
 			},
 			getGrupos: () => {
 				const store = getStore();
@@ -144,12 +181,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					alert("INGRESA DATOS");
 				}
 				console.log(data);
-
 				fetch(store.apiUrl + "/api/anuncios/", {
-					method: "Post",
+					method: "POST",
 					body: JSON.stringify(data),
 					headers: {
-						Authorization: "Bearer " + getStore().token.access,
 						"Content-Type": "application/json"
 					}
 				})

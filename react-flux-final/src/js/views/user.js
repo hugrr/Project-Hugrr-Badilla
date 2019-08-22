@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export class Usuarios extends React.Component {
 	constructor(props) {
@@ -30,10 +31,7 @@ export class Usuarios extends React.Component {
 											<div className="row row-mt-15em">
 												<div className="col-md-7 mt-text">
 													<span className="intro-text-small">Bienvenido</span>
-													<h1>
-														{store.username}
-														Francisco acountuser
-													</h1>
+													<h1>{store.miembro.userAccount}</h1>
 												</div>
 											</div>
 										</div>
@@ -46,6 +44,15 @@ export class Usuarios extends React.Component {
 										<div className="col-md-8 text-left gtco-heading">
 											<h2>Mis Datos</h2>
 											<p>Estos son tus datos registrados</p>
+											<div className="form-group">
+												<Link to="/modprofile">
+													<input
+														type="submit"
+														value="Modificar cuenta"
+														className="btn btn-primary"
+													/>
+												</Link>
+											</div>
 										</div>
 									</div>
 
@@ -64,7 +71,7 @@ export class Usuarios extends React.Component {
 												</span>
 												<div className="feature-copy">
 													<h3>Nombre</h3>
-													<p>{store.miembro.userAccount} fbadilla</p>
+													<p>{store.miembro.userAccount} </p>
 												</div>
 											</div>
 
@@ -74,10 +81,7 @@ export class Usuarios extends React.Component {
 												</span>
 												<div className="feature-copy">
 													<h3>Correo</h3>
-													<p>
-														{store.miembro.mail}
-														Tucorreo@correo.cl
-													</p>
+													<p>{store.miembro.mail}</p>
 												</div>
 											</div>
 
@@ -87,7 +91,7 @@ export class Usuarios extends React.Component {
 												</span>
 												<div className="feature-copy">
 													<h3>Fecha de nacimiento</h3>
-													<p>26-03-1990</p>
+													<p>{store.miembro.fecha_nacimiento}</p>
 												</div>
 											</div>
 
@@ -97,10 +101,8 @@ export class Usuarios extends React.Component {
 												</span>
 												<div className="feature-copy">
 													<h3>Telefono</h3>
-													<p>
-														{store.miembro.phone}
-														+569 6666 6666
-													</p>
+													+569
+													<p>{store.miembro.phone}</p>
 												</div>
 											</div>
 
@@ -110,10 +112,7 @@ export class Usuarios extends React.Component {
 												</span>
 												<div className="feature-copy">
 													<h3>Mi Grupo</h3>
-													<p>
-														{store.grupos.grupoName}
-														club 666
-													</p>
+													<p>{store.grupos.grupoName}</p>
 												</div>
 											</div>
 										</div>
