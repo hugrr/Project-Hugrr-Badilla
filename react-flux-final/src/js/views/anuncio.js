@@ -47,8 +47,8 @@ export class Anuncio extends React.Component {
 										</div>
 									</div>
 									<div className="row">
-										{!!store.avisos &&
-											store.avisos.map((item, i) => {
+										{!!store.aviso &&
+											store.aviso.map((item, i) => {
 												return (
 													<div key={i} className="col-md-3 col-sm-6">
 														<div className="feature-center">
