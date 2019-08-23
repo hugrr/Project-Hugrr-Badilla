@@ -37,7 +37,7 @@ export class Navbar extends React.Component {
 									<a href="#">Grupo</a>
 									<ul className="dropdown">
 										<li>
-											<a href="#">Ver Grupo</a>
+											<Link to="/grupo">Ver Grupo</Link>
 										</li>
 										<li>
 											<a href="#">Crear Grupo</a>

@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { Animated } from "react-animated-css";
 
 export class Usuarios extends React.Component {
 	constructor(props) {
@@ -10,6 +11,7 @@ export class Usuarios extends React.Component {
 	}
 	componentDidMount() {
 		this.actionsContext.getMiembro();
+		this.actionsContext.getGrupos();
 	}
 	render() {
 		return (
@@ -55,67 +57,71 @@ export class Usuarios extends React.Component {
 											</div>
 										</div>
 									</div>
-
 									<div className="row">
-										<div className="col-md-6">
-											<img
-												src="images/user2.png"
-												className="img-responsive"
-												alt="Free HTML5 Bootstrap Template"
-											/>
-										</div>
-										<div className="col-md-6 mt-sm">
-											<div className="feature-left">
-												<span className="icon">
-													<i className="ti-user" />
-												</span>
-												<div className="feature-copy">
-													<h3>Nombre</h3>
-													<p>{store.miembro.userAccount} </p>
-												</div>
+										<Animated
+											animationIn="bounceInLeft"
+											animationOut="fadeOut"
+											isVisible={true}
+											data-animate-effect="fadeInLeft">
+											<div className="col-md-6">
+												<img
+													src="images/user2.png"
+													className="img-responsive"
+													alt="Free HTML5 Bootstrap Template"
+												/>
 											</div>
+											<div className="col-md-6 mt-sm">
+												<div className="feature-left">
+													<span className="icon">
+														<i className="ti-user" />
+													</span>
+													<div className="feature-copy">
+														<h3>Nombre</h3>
+														<p>{store.miembro.userAccount} </p>
+													</div>
+												</div>
+												<div className="feature-left">
+													<span className="icon">
+														<i className="ti-email" />
+													</span>
+													<div className="feature-copy">
+														<h3>Correo</h3>
+														<p>{store.miembro.mail}</p>
+													</div>
+												</div>
 
-											<div className="feature-left">
-												<span className="icon">
-													<i className="ti-email" />
-												</span>
-												<div className="feature-copy">
-													<h3>Correo</h3>
-													<p>{store.miembro.mail}</p>
+												<div className="feature-left ">
+													<span className="icon">
+														<i className="ti-calendar" />
+													</span>
+													<div className="feature-copy">
+														<h3>Fecha de nacimiento</h3>
+														<p>{store.miembro.fecha_nacimiento}</p>
+													</div>
 												</div>
-											</div>
 
-											<div className="feature-left ">
-												<span className="icon">
-													<i className="ti-calendar" />
-												</span>
-												<div className="feature-copy">
-													<h3>Fecha de nacimiento</h3>
-													<p>{store.miembro.fecha_nacimiento}</p>
+												<div className="feature-left">
+													<span className="icon">
+														<i className="ti-tablet" />
+													</span>
+													<div className="feature-copy">
+														<h3>Telefono</h3>
+														+569
+														<p>{store.miembro.phone}</p>
+													</div>
 												</div>
-											</div>
 
-											<div className="feature-left">
-												<span className="icon">
-													<i className="ti-tablet" />
-												</span>
-												<div className="feature-copy">
-													<h3>Telefono</h3>
-													+569
-													<p>{store.miembro.phone}</p>
+												<div className="feature-left">
+													<span className="icon">
+														<i className="ti-bolt" />
+													</span>
+													<div className="feature-copy">
+														<h3>Mi Grupo</h3>
+														<p>{store.miembro.grupoName}</p>
+													</div>
 												</div>
 											</div>
-
-											<div className="feature-left">
-												<span className="icon">
-													<i className="ti-bolt" />
-												</span>
-												<div className="feature-copy">
-													<h3>Mi Grupo</h3>
-													<p>{store.grupos.grupoName}</p>
-												</div>
-											</div>
-										</div>
+										</Animated>
 									</div>
 								</div>
 							</div>

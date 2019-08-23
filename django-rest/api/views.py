@@ -19,6 +19,15 @@ class ProfileView(APIView):
         serializer = MiembroSerializer(todos, many=False)
         return Response(serializer.data)
 
+    def put(self, request, user_id=None):
+        user = Miembro.objects.filter(user_id=request.user.id).first()
+        serializer = MiembroSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class MiembroView(APIView):
     permission_classes = (IsAuthenticated,)

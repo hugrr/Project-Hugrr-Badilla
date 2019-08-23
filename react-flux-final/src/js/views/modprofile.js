@@ -11,6 +11,7 @@ export class modificarUsuario extends React.Component {
 	}
 	componentDidMount() {
 		this.actionsContext.getMiembro();
+		this.actionsContext.getGrupos();
 	}
 
 	render() {
@@ -54,64 +55,122 @@ export class modificarUsuario extends React.Component {
 													onSubmit={e => actions.handleUser(e, this.props.history)}>
 													<div className="row form-group">
 														<div className="col-md-12">
-															<label className="sr-only" htmlFor="name">
-																nombre
-															</label>
-															<input
-																name="userAccount"
-																id="userAccount"
-																placeholder={store.miembro.userAccount}
-																onChange={e => actions.handleMiembro(e)}
-																type="text"
-																className="form-control"
-															/>
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-user" />
+																</span>
+																<div className="feature-copy">
+																	<label className="sr-only" htmlFor="name">
+																		nombre
+																	</label>
+																	<input
+																		name="userAccount"
+																		id="userAccount"
+																		placeholder={store.miembro.userAccount}
+																		onChange={e => actions.handleMiembro(e)}
+																		type="text"
+																		className="form-control"
+																	/>
+																</div>
+															</div>
 														</div>
 													</div>
 
 													<div className="row form-group">
 														<div className="col-md-12">
-															<label className="sr-only" htmlFor="email">
-																Email
-															</label>
-															<input
-																name="mail"
-																id="mail"
-																placeholder={store.miembro.mail}
-																onChange={e => actions.handleMiembro(e)}
-																type="email"
-																className="form-control"
-															/>
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-email" />
+																</span>
+																<div className="feature-copy">
+																	<label className="sr-only" htmlFor="email">
+																		Email
+																	</label>
+																	<input
+																		name="mail"
+																		id="mail"
+																		placeholder={store.miembro.mail}
+																		onChange={e => actions.handleMiembro(e)}
+																		type="email"
+																		className="form-control"
+																	/>
+																</div>
+															</div>
 														</div>
 													</div>
 
 													<div className="row form-group">
 														<div className="col-md-12">
-															<label className="sr-only" htmlFor="subject">
-																Fecha de Nacimiento
-															</label>
-															<input
-																name="fecha_nacimiento"
-																id="fecha_nacimiento"
-																placeholder={store.miembro.fecha_nacimiento}
-																onChange={e => actions.handleMiembro(e)}
-																type="date"
-																className="form-control"
-															/>
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-calendar" />
+																</span>
+																<div className="feature-copy">
+																	<label className="sr-only" htmlFor="subject">
+																		Fecha de Nacimiento
+																	</label>
+																	<input
+																		name="fecha_nacimiento"
+																		id="fecha_nacimiento"
+																		placeholder={store.miembro.fecha_nacimiento}
+																		onChange={e => actions.handleMiembro(e)}
+																		type="date"
+																		className="form-control"
+																	/>
+																</div>
+															</div>
 														</div>
 													</div>
 													<div className="row form-group">
 														<div className="col-md-12">
-															<label className="sr-only" htmlFor="subject">
-																Telefono
-															</label>
-															<input
-																name="phone"
-																id="phone"
-																onChange={e => actions.handleMiembro(e)}
-																type="text"
-																className="form-control"
-																placeholder={store.miembro.phone}
-															/>
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-tablet" />
+																</span>
+																<div className="feature-copy">
+																	<label className="sr-only" htmlFor="subject">
+																		Telefono
+																	</label>
+																	<input
+																		name="phone"
+																		id="phone"
+																		onChange={e => actions.handleMiembro(e)}
+																		type="text"
+																		className="form-control"
+																		placeholder={store.miembro.phone}
+																	/>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div className="row form-group">
+														<div className="col-md-12">
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-bolt" />
+																</span>
+																<div className="feature-copy">
+																	<label className="sr-only" htmlFor="subject">
+																		grupo
+																	</label>
+																	<select
+																		name="grupoid"
+																		id="grupoid"
+																		onChange={e => actions.handleMiembro(e)}
+																		type="text"
+																		className="form-control">
+																		<option value="1">Seleccione</option>
+																		{store.grupos.length > 0 &&
+																			store.grupos.map((item, i) => {
+																				return (
+																					<option value={item.id} key={i}>
+																						{item.grupoName}
+																					</option>
+																				);
+																			})}
+																	</select>
+																</div>
+															</div>
 														</div>
 													</div>
 													<div className="form-group">

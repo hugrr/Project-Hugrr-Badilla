@@ -74,8 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = {
 					username: username,
 					email: email,
-					password: password,
-					password2: password2
+					password: password
 				};
 				fetch(store.apiUrl + "/api/registro/", {
 					method: "POST",
