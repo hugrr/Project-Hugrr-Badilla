@@ -47,22 +47,50 @@ export class Anuncio extends React.Component {
 										</div>
 									</div>
 									<div className="row">
-										{!!store.avisos &&
-											store.avisos.map((item, i) => {
-												return (
-													<div key={i} className="col-md-3 col-sm-6">
-														<div className="feature-center">
-															<span className="icon">
-																<i className="ti-announcement" />
-															</span>
+										<div className="col-md-3 col-sm-6">
+											<div className="feature-center">
+												<span className="icon">
+													<i className="ti-announcement" />
+												</span>
 
-															<h3>{item.anuncioName}</h3>
+												<h3>ya queda poco para el pitch day</h3>
 
-															<p>{item.descripton} </p>
-														</div>
-													</div>
-												);
-											})}
+												<p>vamos que lo logramos</p>
+											</div>
+										</div>
+										<div className="col-md-3 col-sm-6">
+											<div className="feature-center">
+												<span className="icon">
+													<i className="ti-announcement" />
+												</span>
+
+												<h3>realizar presentacion </h3>
+
+												<p>agregar logos de app y de 4geeks</p>
+											</div>
+										</div>
+										<div className="col-md-3 col-sm-6">
+											<div className="feature-center">
+												<span className="icon">
+													<i className="ti-announcement" />
+												</span>
+
+												<h3>quien me presta un mouse</h3>
+
+												<p>mi mouse esta malo, ayudaaa grupo</p>
+											</div>
+										</div>
+										<div className="col-md-3 col-sm-6">
+											<div className="feature-center">
+												<span className="icon">
+													<i className="ti-announcement" />
+												</span>
+
+												<h3>primer anuncio</h3>
+
+												<p>este es el anuncio de prueba</p>
+											</div>
+										</div>
 									</div>
 									<ModalAviso />
 								</div>

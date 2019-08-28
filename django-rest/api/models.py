@@ -24,7 +24,7 @@ class Anuncio(models.Model):
     anuncioName= models.CharField(max_length=50, default='')
     descripton = models.CharField(max_length=150, default='')
     media = models.CharField(max_length=150, default='')
-    date_anuncio = models.DateField(max_length=150, default='', null =True)
+    date_anuncio = models.DateField(auto_now=False, auto_now_add=False,)
     anuncio_nameID = models.ForeignKey(Miembro,on_delete=models.CASCADE)
     ubication = models.CharField(max_length=150, default='')
 class Pais(models.Model):
@@ -45,7 +45,7 @@ class Ubicacion(models.Model):
     ubication_nameID = models.ForeignKey(Miembro,on_delete=models.CASCADE )
 class Evento(models.Model):
     name_event= models.CharField(max_length=50, default='')
-    date_event = models.DateField(max_length=150, default='')
+    date_event = models.DateField(auto_now=False, auto_now_add=False,)
     cost = models.CharField(max_length=150, default='')
     event_id= models.ForeignKey(Miembro,on_delete=models.CASCADE)
     grupo_nameID = models.ForeignKey(GrupoName,on_delete=models.CASCADE, null =True)
@@ -67,21 +67,21 @@ The ContactSerializer is where you will specify what properties
 from the ever Contact should be inscuded in the JSON response
 """
 
-class MiembroSerializer(serializers.ModelSerializer):
-
-
-    class Meta:
-        model = Miembro
-        # what fields to include?
-        fields = ('id', 'userAccount', 'fecha_nacimiento', 'phone', 'mail', 'user_id', 'grupoid',)
-
 class GrupoNameSerializer(serializers.ModelSerializer):
-
 
     class Meta:
         model = GrupoName
         # what fields to include?
-        fields = ('id','grupoName','terminos','media')
+        fields = ('id', 'grupoName', 'terminos', 'media',)
+
+
+class MiembroSerializer(serializers.ModelSerializer):
+    grupoName = GrupoNameSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = Miembro
+        # what fields to include?
+        fields = ('id', 'userAccount', 'fecha_nacimiento', 'phone', 'mail', 'user_id', 'grupoid', 'grupoName')
 
 class EventoSerializer(serializers.ModelSerializer):
 
@@ -164,6 +164,13 @@ class UserCreateSerializer(serializers.ModelSerializer):
         )
         user.set_password(validated_data['password'])
         user.save()
+        Miembro.objects.create(
+            userAccount=user.username,
+            fecha_nacimiento="",
+            phone="",
+            mail=user.email,
+            user_id=user
+        )
         return user
 
 

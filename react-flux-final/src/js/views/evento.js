@@ -18,9 +18,7 @@ export class Evento extends React.Component {
 									<div className="row">
 										<div className="col-md-12 col-md-offset-0 text-left">
 											<div className="row row-mt-15em">
-												<div
-													className="col-md-7 mt-text animate-box"
-													data-animate-effect="fadeInUp">
+												<div className="col-md-7 mt-text ">
 													<span className="intro-text-small">Acá nos reunimos!</span>
 													<h1>Eventos </h1>
 												</div>
@@ -32,7 +30,7 @@ export class Evento extends React.Component {
 							<div id="gtco-features" className="border-bottom">
 								<div className="gtco-container">
 									<div className="row">
-										<div className="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+										<div className="col-md-8 col-md-offset-2 text-center gtco-heading ">
 											<h2>Eventos</h2>
 											<p>
 												La comunicacion debe ser fluida, mantente siempre al dia con la
@@ -41,60 +39,43 @@ export class Evento extends React.Component {
 										</div>
 									</div>
 									<div className="row">
-										<div className="col-md-3 col-sm-6">
-											<div className="feature-center animate-box" data-animate-effect="fadeIn">
+										<div className="col-md-4 col-sm-6">
+											<div className="feature-center ">
 												<span className="icon">
 													<i className="ti-announcement" />
 												</span>
-												<h3>Carrete clumpleaños hugo</h3>
-												<p>vamos a festejar el cumple de hugo, todos invitados </p>
+												<h3>Celebracion pitch day</h3>
+												<p>creador del evento</p>
+												<h3>fbadilla</h3>
+												<button type="button" className="btn btn-danger">
+													Ver <i className="ti-eye" />
+												</button>
 											</div>
 										</div>
-										<div className="col-md-3 col-sm-6">
-											<div className="feature-center animate-box" data-animate-effect="fadeIn">
+										<div className="col-md-4 col-sm-6">
+											<div className="feature-center ">
 												<span className="icon">
 													<i className="ti-rocket" />
 												</span>
-												<h3>Fumaton</h3>
-												<p>nos juntaremos a vivir la experiencia high 420</p>
+												<h3>Viaje a la playa fulltime</h3>
+												<p>creador del evento</p>
+												<h3>hugor</h3>
+												<button type="button" className="btn btn-danger">
+													Ver <i className="ti-eye" />
+												</button>
 											</div>
 										</div>
-										<div className="col-md-3 col-sm-6">
-											<div className="feature-center animate-box" data-animate-effect="fadeIn">
+										<div className="col-md-4 col-sm-6">
+											<div className="feature-center ">
 												<span className="icon">
 													<i className="ti-announcement" />
 												</span>
-												<h3>Despedida full Time</h3>
-												<p>vamos a festejar el cumple de hugo, todos invitados </p>
-											</div>
-										</div>
-										<div className="col-md-3 col-sm-6">
-											<div className="feature-center animate-box" data-animate-effect="fadeIn">
-												<span className="icon">
-													<i className="ti-announcement" />
-												</span>
-												<h3>Hackaton 4Geeks</h3>
-												<p>todos invitados a cambiar el mundo </p>
-											</div>
-										</div>
-										<div className="col-md-3 col-sm-6">
-											<div className="feature-center animate-box" data-animate-effect="fadeIn">
-												<span className="icon">
-													<i className="ti-gift" />
-												</span>
-												<h3>regalo pc que no uso</h3>
-												<p>amigos tengo un pc que no uso, por si alguien lo necesita </p>
-											</div>
-										</div>
-										<div className="col-md-3 col-sm-6">
-											<div className="feature-center animate-box" data-animate-effect="fadeIn">
-												<span className="icon">
-													<i className="ti-gift" />
-												</span>
-												<h3>permuto mouse </h3>
-												<p>
-													amigos tengo un mouse que no uso, por si alguien lo quiere cambiar{" "}
-												</p>
+												<h3>workshop react Native</h3>
+												<p>creador del evento</p>
+												<h3>luis</h3>
+												<button type="button" className="btn btn-danger">
+													Ver <i className="ti-eye" />
+												</button>
 											</div>
 										</div>
 									</div>

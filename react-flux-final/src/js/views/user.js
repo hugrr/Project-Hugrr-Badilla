@@ -116,8 +116,8 @@ export class Usuarios extends React.Component {
 														<i className="ti-bolt" />
 													</span>
 													<div className="feature-copy">
-														<h3>Mi Grupo</h3>
-														<p>{store.miembro.grupoName}</p>
+														<h3>ID Grupo</h3>
+														<p>{store.miembro.gruponame}</p>
 													</div>
 												</div>
 											</div>

@@ -154,16 +154,23 @@ export class modificarUsuario extends React.Component {
 																		grupo
 																	</label>
 																	<select
-																		name="grupoid"
-																		id="grupoid"
+																		name="gruponame"
+																		id="gruponame"
 																		onChange={e => actions.handleMiembro(e)}
 																		type="text"
 																		className="form-control">
 																		<option value="1">Seleccione</option>
 																		{store.grupos.length > 0 &&
 																			store.grupos.map((item, i) => {
+																				const selected =
+																					store.miembro.gruponame == item.id
+																						? "selected"
+																						: "";
 																				return (
-																					<option value={item.id} key={i}>
+																					<option
+																						value={item.id}
+																						key={i}
+																						selected={selected}>
 																						{item.grupoName}
 																					</option>
 																				);

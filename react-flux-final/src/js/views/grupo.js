@@ -10,7 +10,8 @@ export class Grupo extends React.Component {
 		this.actionsContext = null;
 	}
 	componentDidMount() {
-		this.actionsContext.getMiembro();
+		//this.actionsContext.getMiembro();
+		//this.actionsContext.getGrupos();
 	}
 	render() {
 		return (
@@ -18,6 +19,10 @@ export class Grupo extends React.Component {
 				{({ store, actions }) => {
 					this.storeContext = store;
 					this.actionsContext = actions;
+					const grupo = store.grupos.filter((item, i) => {
+						return store.miembro.gruponame == item.id;
+					});
+					console.log(grupo);
 					return (
 						<Fragment>
 							<header
@@ -51,7 +56,8 @@ export class Grupo extends React.Component {
 											data-animate-effect="fadeInLeft">
 											<div className="col-md-8 col-md-offset-2 text-center gtco-heading ">
 												<h2>Perteneces a la comunidad :</h2>
-												<h1> NameGrupo</h1>
+
+												<h1> {!!grupo[0] && grupo[0].grupoName}</h1>
 												<p>Aqui encontras toda la informacion de tu comunidad.</p>
 											</div>
 										</Animated>
@@ -70,10 +76,10 @@ export class Grupo extends React.Component {
 													<span
 														className="counter js-counter"
 														data-from="0"
-														data-to="10"
+														data-to="4"
 														data-speed="500"
 														data-refresh-interval="10">
-														1
+														4
 													</span>
 													<span className="counter-label">miembros activos</span>
 												</div>
@@ -87,10 +93,10 @@ export class Grupo extends React.Component {
 													<span
 														className="counter js-counter"
 														data-from="0"
-														data-to="5"
+														data-to="4"
 														data-speed="5000"
 														data-refresh-interval="50">
-														1
+														4
 													</span>
 													<span className="counter-label">anuncios emitidos</span>
 												</div>
@@ -103,15 +109,29 @@ export class Grupo extends React.Component {
 													<span
 														className="counter js-counter"
 														data-from="0"
-														data-to="4"
+														data-to="3"
 														data-speed="5000"
 														data-refresh-interval="10">
-														1
+														3
 													</span>
 													<span className="counter-label">Eventos realizados</span>
 												</div>
 											</div>
 										</Animated>
+									</div>
+									<div className="col-md-12">
+										<div className="feature-center">
+											<span className="icon">
+												<i className="ti-check" />
+											</span>
+											<div className="feature-copy">
+												<h1>Terminos de la comunidad:</h1>
+												<h3>
+													<i className="ti-pencil" />
+													me comprometo a programar por el resto de mi vida...{" "}
+												</h3>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

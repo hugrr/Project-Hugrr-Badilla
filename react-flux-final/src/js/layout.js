@@ -8,6 +8,7 @@ import { Usuarios } from "./views/user";
 import { Anuncio } from "./views/anuncio";
 import { modificarUsuario } from "./views/modprofile";
 import { Grupo } from "./views/grupo";
+import { crearGrupo } from "./views/creargrupo";
 import { CrearEvento } from "./views/crearEvento";
 import { Evento } from "./views/evento";
 import { Navbar } from "./component/navbar";
@@ -40,6 +41,7 @@ export class Layout extends React.Component {
 										<Route path="/anuncios" component={Anuncio} />
 										<Route path="/modprofile" component={modificarUsuario} />
 										<Route path="/grupo" component={Grupo} />
+										<Route path="/creargrupo" component={crearGrupo} />
 										<Route path="/crearEvento" component={CrearEvento} />
 										<Route path="/eventos" component={Evento} />
 										<Route render={() => <h1>Not found!</h1>} />

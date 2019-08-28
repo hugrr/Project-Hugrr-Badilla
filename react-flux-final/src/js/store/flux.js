@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			apiUrl: "https://3000-ae181a3c-8a6a-4525-b8c5-d32b2883f34f.ws-us0.gitpod.io",
+			apiUrl: "https://3000-d4609382-6d38-412a-9c7d-f8dd440082ea.ws-us0.gitpod.io",
 			token: {
 				refresh: "",
 				access: ""
@@ -35,6 +35,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
+			handleGrupo: (e, history) => {
+				e.preventDefault();
+				getActions().postgrupo(history);
+			},
+			handleevento: (e, history) => {
+				e.preventDefault();
+				getActions().postevento(history);
+			},
+
 			handleLogin: (e, history) => {
 				e.preventDefault();
 				const store = getStore();
@@ -65,6 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => {
 						setStore({ token: data, username: "", password: "" });
+						localStorage.setItem("token", data.access);
 
 						history.push("/usuarios");
 					});
@@ -161,6 +171,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						history.push("/usuarios");
 					});
 			},
+			postgrupo: history => {
+				const store = getStore();
+				const data = store.grupos;
+
+				fetch(store.apiUrl + "/api/profile/", {
+					method: "PUT",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token.access
+					}
+				})
+					.then(resp => resp.json())
+					.then(data => {
+						setStore({ grupos: data });
+						alert("se a creado tu nuevo grupo");
+						history.push("/usuarios");
+					});
+			},
 			getGrupos: () => {
 				const store = getStore();
 				fetch(store.apiUrl + "/api/grupos/", {
@@ -197,30 +226,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				//setStore({ demo: demo });
 			},
-			SaveEvento: data => {
+			SaveEvento: history => {
 				const store = getStore();
-				if (data != "") {
-				} else {
-					alert("INGRESA DATOS");
-				}
-				console.log(data);
-				let url = store.apiUrl + "/api/eventos/";
+				const data = store.grupos;
 
-				fetch(url, {
-					method: "POST",
+				fetch(store.apiUrl + "/api/profile/", {
+					method: "PUT",
 					body: JSON.stringify(data),
 					headers: {
-						Authorization: "Bearer " + getStore().token.access,
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token.access
 					}
 				})
 					.then(resp => resp.json())
-					.then(resp => {
-						getActions().getEvento();
+					.then(data => {
+						setStore({ grupos: data });
+						alert("se a creado tu nuevo grupo");
+						history.push("/eventos");
 					});
 
 				//reset the global store
 				//setStore({ demo: demo });
+			},
+			postevento: history => {
+				const store = getStore();
+				const data = store.grupos;
+
+				fetch(store.apiUrl + "/api/profile/", {
+					method: "PUT",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token.access
+					}
+				})
+					.then(resp => resp.json())
+					.then(data => {
+						setStore({ grupos: data });
+						alert("se a creado tu nuevo evento");
+						history.push("/eventos");
+					});
 			}
 		}
 	};

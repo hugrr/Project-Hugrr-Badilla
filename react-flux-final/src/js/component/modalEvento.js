@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
 export default class ModalEvento extends React.Component {
 	constructor(props) {
@@ -11,17 +12,9 @@ export default class ModalEvento extends React.Component {
 			cost: "",
 			event_id: 1
 		};
-		this.handleInputChange = this.handleInputChange.bind(this);
+		this.props.history;
 	}
-	handleInputChange(event) {
-		const target = event.target;
-		const value = target.type === "checkbox" ? target.checked : target.value;
-		const name = target.name;
-		console.log(this.state);
-		this.setState({
-			[name]: value
-		});
-	}
+	handleInputChange(event) {}
 
 	render() {
 		return (
@@ -43,14 +36,14 @@ export default class ModalEvento extends React.Component {
 										</h5>
 									</div>
 									<div className="modal-body">
-										<form>
+										<form action="#" onSubmit={e => actions.handleGrupo(e, this.props.history)}>
 											<div className="form-row">
 												<div className="form-group col-md-6">
 													<label htmlFor="inputNombre">Nombre</label>
 													<input
 														type="text"
 														name="name_event"
-														onChange={this.handleInputChange}
+														//onChange={this.handleInputChange}
 														className="form-control"
 														id="inputNombre"
 														placeholder=""
@@ -62,7 +55,7 @@ export default class ModalEvento extends React.Component {
 															<label htmlFor="inputDireccion">Direccion</label>
 															<input
 																name=""
-																onChange={this.handleInputChange}
+																//onChange={this.handleInputChange}
 																type="text"
 																className="form-control"
 																id="inputdireccion"
@@ -88,7 +81,7 @@ export default class ModalEvento extends React.Component {
 													<input
 														id="date"
 														name="date_event"
-														onChange={this.handleInputChange}
+														//onChange={this.handleInputChange}
 														type="date"
 														className="form-control"
 													/>
@@ -97,7 +90,7 @@ export default class ModalEvento extends React.Component {
 													<label htmlFor="inputCity">Costo</label>
 													<input
 														name="cost"
-														onChange={this.handleInputChange}
+														//onChange={this.handleInputChange}
 														type="text"
 														className="form-control"
 														id="inputCity"
@@ -113,17 +106,9 @@ export default class ModalEvento extends React.Component {
 										</button>
 										<button
 											className="btn btn-primary btn-lg"
-											onClick={() => {
-												actions.SaveEvento({
-													name_event: this.state.name_event,
-													date_event: this.state.date_event,
-													cost: this.state.cost,
-													event_id: this.state.event_id
-												});
-											}}
+											onSubmit={e => actions.handleevent(e, this.props.history)}
 											data-dismiss="modal">
-											{""}
-											Save changes
+											o Save changes
 										</button>
 									</div>
 								</div>
@@ -135,3 +120,6 @@ export default class ModalEvento extends React.Component {
 		);
 	}
 }
+ModalEvento.propTypes = {
+	history: PropTypes.object
+};

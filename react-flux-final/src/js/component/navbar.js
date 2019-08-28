@@ -40,7 +40,7 @@ export class Navbar extends React.Component {
 											<Link to="/grupo">Ver Grupo</Link>
 										</li>
 										<li>
-											<a href="#">Crear Grupo</a>
+											<Link to="/creargrupo">Crear Grupo</Link>
 										</li>
 									</ul>
 								</li>

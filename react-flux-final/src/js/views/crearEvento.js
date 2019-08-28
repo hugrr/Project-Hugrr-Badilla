@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import ModalEvento from "../component/modalEvento";
+import PropTypes from "prop-types";
 
 export class CrearEvento extends React.Component {
 	render() {
@@ -28,42 +30,121 @@ export class CrearEvento extends React.Component {
 									</div>
 								</div>
 							</header>
-							<div id="gtco-features" className="border-bottom">
+							<div className="gtco-section border-bottom">
 								<div className="gtco-container">
 									<div className="row">
-										<div className="col-md-8 col-md-offset-2 text-center gtco-heading ">
-											<h2>Crear</h2>
-											<p>
-												La comunicacion debe ser fluida, mantente siempre al dia con la
-												informacion de tu grupo
-											</p>
-											<button
-												type="button"
-												className="btn btn-primary btn-lg "
-												data-toggle="modal"
-												data-target="#exampleModal1">
-												Crear
-											</button>
-										</div>
-									</div>
-									<div className="row">
-										{!!store.eventos &&
-											store.evento.map((item, i) => {
-												return (
-													<div key={i} className="col-md-3 col-sm-6">
-														<div className="feature-center">
-															<span className="icon">
-																<i className="ti-rocket" />
-															</span>
-															<h3>{item.name_event}</h3>
-															<p>{item.date_event} </p>
-															<p>{item.cost} Por persona </p>
+										<div className="col-md-12">
+											<div className="col-md-6 ">
+												<h3>Crear nuevo evento</h3>
+												<form
+													action="#"
+													onSubmit={e => actions.handleevento(e, this.props.history)}>
+													<div className="row form-group">
+														<div className="col-md-12">
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-announcement" />
+																</span>
+																<div className="feature-copy">
+																	<input
+																		name="userAccount"
+																		id="userAccount"
+																		placeholder="nombre del evento"
+																		//onChange={e => actions.handleMiembro(e)}
+																		type="text"
+																		className="form-control"
+																	/>
+																</div>
+															</div>
 														</div>
 													</div>
-												);
-											})}
+
+													<div className="row form-group">
+														<div className="col-md-12">
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-ink-pen" />
+																</span>
+																<div className="feature-copy">
+																	<input
+																		name="mail"
+																		id="mail"
+																		placeholder="ingresa la direccion.."
+																		//onChange={e => actions.handleMiembro(e)}
+																		type="text"
+																		className="form-control"
+																	/>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div className="row form-group">
+														<div className="col-md-12">
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-calendar" />
+																</span>
+																<div className="feature-copy">
+																	<input
+																		name="date"
+																		id="date"
+																		placeholder="fecha del evento"
+																		//onChange={e => actions.handleMiembro(e)}
+																		type="date"
+																		className="form-control"
+																	/>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div className="row form-group">
+														<div className="col-md-12">
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-timer" />
+																</span>
+																<div className="feature-copy">
+																	<input
+																		name="date"
+																		id="date"
+																		placeholder="fecha del evento"
+																		//onChange={e => actions.handleMiembro(e)}
+																		type="time"
+																		className="form-control"
+																	/>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div className="row form-group">
+														<div className="col-md-12">
+															<div className="feature-left">
+																<span className="icon">
+																	<i className="ti-credit-card" />
+																</span>
+																<div className="feature-copy">
+																	<input
+																		name="costo"
+																		id="date"
+																		placeholder="costo"
+																		//onChange={e => actions.handleMiembro(e)}
+																		type="text"
+																		className="form-control"
+																	/>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div className="form-group">
+														<Link to="/eventos" className="btn btn-primary">
+															Crear evento
+														</Link>
+													</div>
+												</form>
+											</div>
+										</div>
 									</div>
-									<ModalEvento />
 								</div>
 							</div>
 						</Fragment>
@@ -73,3 +154,6 @@ export class CrearEvento extends React.Component {
 		);
 	}
 }
+CrearEvento.propTypes = {
+	history: PropTypes.object
+};
